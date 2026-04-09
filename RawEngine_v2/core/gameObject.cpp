@@ -3,21 +3,25 @@
 #include "mesh.h"
 
 namespace core {
+
     void gameObject::translate(glm::vec3 translation) {
-        Model.translate(translation);
+        model.translate(translation);
     }
     void gameObject::rotate(glm::vec3 axis, float radians) {
-        Model.rotate(axis, radians);
+        model.rotate(axis, radians);
     }
     void gameObject::scale(glm::vec3 translation) {
-        Model.scale(translation);
+        model.scale(translation);
     }
     glm::mat4 gameObject::getModelMatrix() {
-        return Model.getModelMatrix();
+        return model.getModelMatrix();
     }
 
-
-    void gameObject::CreateGameObject(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, float RotationRadians, glm::vec3 Scale) {
+    void gameObject::CreateGameObject(std::string Name, glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation) {
+        model.ModelName = Name;
+        model.translate(Transform);
+        model.rotate(Rotation, 0.0f);
+        model.scale(Scale);
 
     }
     void gameObject::CreateQuad(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale) {

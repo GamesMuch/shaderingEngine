@@ -12,18 +12,21 @@ namespace core {
 
     class gameObject {
 
+    private:
+        Model model;
     public:
         enum class ModelType {Object2d,Object3d};
-        ModelType ModelType;
-        std::string ModelName;
-        Model Model;
+        ModelType ModelType = ModelType::Object3d;
+        std::string ModelName = "Default";
+
+        gameObject(Model modl) : model(modl){}
 
         void render();
         void translate(glm::vec3 translate);
         void rotate(glm::vec3 axis, float radians);
         void scale(glm::vec3 scale);
         glm::mat4 getModelMatrix();
-        void CreateGameObject(std::string Name,glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale);
+        void CreateGameObject(std::string Name,glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation = glm::vec3(0,0,0));
         void CreateQuad(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale);
     };
 }

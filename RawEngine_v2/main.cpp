@@ -98,8 +98,15 @@ void processInput(GLFWwindow *window) {
         Offset.y = cameraSpeed;
 #pragma endregion
 }
-core::Model CreateObject(std::string name) {
+core::Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
+}
+core::gameObject CreateObject(core::Model gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
+
+    core::gameObject object = gameModel;
+    object.CreateGameObject(gameObjectName, Position, Rotation, Scale);
+
+    return object;
 }
 void framebufferSizeCallback(GLFWwindow *window,
                              int width, int height) {
@@ -146,6 +153,12 @@ GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
 }
 
 int main() {
+
+    //Initialize gameModels
+
+    core::Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
+    core::Model Sphere = CreateModel("models/sphere.fbx");
+    core::Model Fish = CreateModel("models/fish.obj");
     /*
     {
         int a=2;
@@ -255,6 +268,8 @@ int main() {
     //FirstScene
 #pragma region FirstScene
 
+    core::gameObject FirstObject = CreateObject(Fish, "Fish object", glm::vec3(0,0,0))
+
 
     core::Mesh otherQuad = core::Mesh::generateQuad();
     core::Model quad2Model({otherQuad});
@@ -264,20 +279,20 @@ int main() {
     quad2Model.ModelName = "CageQuad";
     Scene1.emplace_back(&quad2Model);
 
-    core::Model suzanne = CreateObject("models/nonormalmonkey.obj");
+    core::Model suzanne = CreateModel("models/nonormalmonkey.obj");
     suzanne.translate(glm::vec3(-2,0,3));
     suzanne.type = core::Model::ModelType::Object3d;
     suzanne.ModelName = "monkey1";
     Scene1.emplace_back(&suzanne);
 
-    core::Model light = CreateObject("models/sphere.fbx");
+    core::Model light = CreateModel("models/sphere.fbx");
     light.translate(glm::vec3(1,0,0));
     light.scale(glm::vec3(1,1,1));
     light.type = core::Model::ModelType::Object3d;
     light.ModelName = "lightOrb";
     Scene1.emplace_back(&light);
 
-    core::Model fish = CreateObject("models/fish.obj");
+    core::Model fish = CreateModel("models/fish.obj");
     fish.translate(glm::vec3(-2,0,3));
     fish.scale(glm::vec3(1.0f,5.0f,1.0f));
     fish.type = core::Model::ModelType::Object3d;
@@ -289,25 +304,25 @@ int main() {
 #pragma endregion FirstScene
 
 #pragma region SecondScene
-    core::Model money2 = CreateObject("models/nonormalmonkey.obj");
+    core::Model money2 = CreateModel("models/nonormalmonkey.obj");
     money2.translate(glm::vec3(0,1,3));
     money2.rotate(glm::vec3(0.53f,0.935f,0.235f),240);
     money2.type = core::Model::ModelType::Object3d;
     money2.ModelName = "money2";
     Scene2.emplace_back(&money2);
 
-    core::Model money3 = CreateObject("models/nonormalmonkey.obj");
+    core::Model money3 = CreateModel("models/nonormalmonkey.obj");
     money3.translate(glm::vec3(0,5,3));
     money3.type = core::Model::ModelType::Object3d;
     money3.ModelName = "money3";
     Scene2.emplace_back(&money3);
 
-    core::Model money4 = CreateObject("models/nonormalmonkey.obj");
+    core::Model money4 = CreateModel("models/nonormalmonkey.obj");
     money4.translate(glm::vec3(0,1,7));
     money4.type = core::Model::ModelType::Object3d;
     money4.ModelName = "money4";
     Scene2.emplace_back(&money4);
-    core::Model money5 = CreateObject("models/nonormalmonkey.obj");
+    core::Model money5 = CreateModel("models/nonormalmonkey.obj");
     money5.translate(glm::vec3(2,1,3));
     money5.type = core::Model::ModelType::Object3d;
     money5.ModelName = "money5";

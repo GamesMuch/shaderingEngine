@@ -11,6 +11,8 @@
 #include "core/gameObject.h"
 #include <glm/gtc/matrix_access.hpp> // to extract columns from matrices
 
+#include "core/Scene.h"
+
 //#define MAC_CLION
 #define VSTUDIO
 
@@ -28,11 +30,19 @@
 #include <imgui_impl_opengl3.h>
 #endif
 
+using GameObject = core::gameObject;
+using Vector4 = glm::vec4;
+using Vector3 = glm::vec3;
+using Vector2 = glm::vec2;
+using Scene = core::Scene;
+using shared_Model = std::shared_ptr<core::Model>;
+
+
 int g_width = 800;
 int g_height = 600;
-glm::vec4 Offset = glm::vec4(0.0f,0.0f,0.0f,0.0f);
-glm::vec2 MouseAngle = glm::vec2(0.0f,0.0f);
-glm::vec3 LightDirection = glm::vec3(3.0f,2.0f,0.0f);
+Vector4 Offset = Vector4(0.0f,0.0f,0.0f,0.0f);
+Vector2 MouseAngle = Vector2(0.0f,0.0f);
+Vector3 LightDirection = Vector3(3.0f,2.0f,0.0f);
 
 
 float cameraSpeed = 1.0f;
@@ -47,6 +57,9 @@ std::string ActiveScene;
 
 std::vector<core::Model*> Scene1;
 std::vector<core::Model*> Scene2;
+
+
+std::vector<core::gameObject*> SceneGameObject;
 
 struct Shader {
     std::string name;
@@ -98,14 +111,13 @@ void processInput(GLFWwindow *window) {
         Offset.y = cameraSpeed;
 #pragma endregion
 }
-core::Model CreateModel(std::string name) {
+shared_Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
-core::gameObject CreateObject(core::Model gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Rotation, glm::vec3 Scale) {
+core::gameObject CreateObject(core::Model gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
 
     core::gameObject object = gameModel;
-    object.CreateGameObject(gameObjectName, Position, Rotation, Scale);
-
+    object.CreateGameObject(gameObjectName, Position, Scale, Rotation);
     return object;
 }
 void framebufferSizeCallback(GLFWwindow *window,
@@ -154,11 +166,7 @@ GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
 
 int main() {
 
-    //Initialize gameModels
 
-    core::Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
-    core::Model Sphere = CreateModel("models/sphere.fbx");
-    core::Model Fish = CreateModel("models/fish.obj");
     /*
     {
         int a=2;
@@ -265,11 +273,24 @@ int main() {
     glDeleteShader(modelVertexShader);
     glDeleteShader(fragmentShader);
     glDeleteShader(textureShader);
+
+    //Initialize gameModels
+
+    core::Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
+    core::Model Sphere = CreateModel("models/sphere.fbx");
+    core::Model Fish = CreateModel("models/fish.obj");
+
     //FirstScene
 #pragma region FirstScene
 
-    core::gameObject FirstObject = CreateObject(Fish, "Fish object", glm::vec3(0,0,0))
+    GameObject FirstObject = CreateObject(Fish, "Fish object", Vector3(0,0,0), Vector3(5,5,1));
+    FirstObject.shaderProgram = modelLightShaderProgram;
+    SceneGameObject.emplace_back(&FirstObject);
 
+    Scene ObjectScene = Scene(
+        CreateObject(SuzanneMonkey, "Monkey1", Vector3(2)),
+        CreateObject(Sphere, "Ball1", Vector3(5,-2,-4))
+            );
 
     core::Mesh otherQuad = core::Mesh::generateQuad();
     core::Model quad2Model({otherQuad});
@@ -330,7 +351,7 @@ int main() {
 
     //Add more monkey
 
-    core::Model fih = CreateObject("models/fish.obj");
+    core::Model fih = CreateModel("models/fish.obj");
     fih.translate(glm::vec3(0,0.0,0));
     fih.rotate(glm::vec3(0,0,1), 90);
     fih.scale(glm::vec3(1.0,5.0,1.0));
@@ -342,7 +363,7 @@ int main() {
 
 #pragma endregion SecondScene
 
-    core::Model lightOrb = CreateObject("models/sphere.fbx");
+    core::Model lightOrb = CreateModel("models/sphere.fbx");
     lightOrb.translate(LightDirection);
     lightOrb.scale(glm::vec3(0.1,0.1,0.1));
     lightOrb.ModelName = "LightOrb";
@@ -571,45 +592,67 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         lightOrb.render();
         glBindVertexArray(0);
 
-        for (core::Model* mod : *CurrentScene) {
+        for (GameObject obj : ObjectScene.getObjects()) {
+            glUseProgram(obj.shaderProgram);
+            glBindVertexArray(0);
+            glActiveTexture(GL_TEXTURE0);
+            glUniformMatrix4fv(glGetUniformLocation(obj.shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(projection * view * obj.getModelMatrix()));
 
-            if (mod->type == core::Model::ModelType::Object3d) {
-
-                glUseProgram(modelLightShaderProgram);
-                glBindVertexArray(0);
-                glActiveTexture(GL_TEXTURE0);
-                glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * mod->getModelMatrix()));
-
-                glUniform3f(glGetUniformLocation(modelLightShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
-                glUniform1i(glGetUniformLocation(modelLightShaderProgram,"lightType"),LightType);
-                glUniform3f(glGetUniformLocation(modelLightShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
-                glUniform3f(glGetUniformLocation(modelLightShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
-                glUniform3f(glGetUniformLocation(modelLightShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
-
-
-                mod->render();
-
-                glBindVertexArray(0);
-
+            if (obj.shaderProgram == modelLightShaderProgram) {
+                glUniform3f(glGetUniformLocation(obj.shaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
+                glUniform1i(glGetUniformLocation(obj.shaderProgram,"lightType"),LightType);
+                glUniform3f(glGetUniformLocation(obj.shaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
+                glUniform3f(glGetUniformLocation(obj.shaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
+                glUniform3f(glGetUniformLocation(obj.shaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
             }
+            obj.render();
 
-            else if (mod->type == core::Model::ModelType::Object2d) {
-
-                glUseProgram(textureShaderProgram);
-                glUniformMatrix4fv(textureModelUniform, 1, GL_FALSE, glm::value_ptr(projection * view * mod->getModelMatrix()));
-                glActiveTexture(GL_TEXTURE0); // upcoming OpenGL texture configuration calls refer to the first (of 8?) textures
-                glUniform1i(textureUniform, 0); // For the "text" uniform in the currently bound shader (which includes texture.fs), use the texture that GL_TEXTURE0 points to
-                glBindTexture(GL_TEXTURE_2D, getCaged.getId()); // Make the current texture (GL_TEXTURE0) point to the loaded texture
-                mod->render();
-                // typically do this to prevent confusion:
-                glBindTexture(GL_TEXTURE_2D, 0); // unbind
-                glBindVertexArray(0);
-
-            }
-            else {
-                return 1;
-            }
+            glBindVertexArray(0);
         }
+#pragma region OldSceneUser
+        //
+        // for (core::Model* mod : *CurrentScene) {
+        //
+        //     if (mod->type == core::Model::ModelType::Object3d) {
+        //
+        //         glUseProgram(modelLightShaderProgram);
+        //         glBindVertexArray(0);
+        //         glActiveTexture(GL_TEXTURE0);
+        //         glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * mod->getModelMatrix()));
+        //
+        //         glUniform3f(glGetUniformLocation(modelLightShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
+        //         glUniform1i(glGetUniformLocation(modelLightShaderProgram,"lightType"),LightType);
+        //         glUniform3f(glGetUniformLocation(modelLightShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
+        //         glUniform3f(glGetUniformLocation(modelLightShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
+        //         glUniform3f(glGetUniformLocation(modelLightShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
+        //
+        //
+        //         mod->render();
+        //
+        //         glBindVertexArray(0);
+        //
+        //     }
+        //
+        //     else if (mod->type == core::Model::ModelType::Object2d) {
+        //
+        //         glUseProgram(textureShaderProgram);
+        //         glUniformMatrix4fv(textureModelUniform, 1, GL_FALSE, glm::value_ptr(projection * view * mod->getModelMatrix()));
+        //         glActiveTexture(GL_TEXTURE0); // upcoming OpenGL texture configuration calls refer to the first (of 8?) textures
+        //         glUniform1i(textureUniform, 0); // For the "text" uniform in the currently bound shader (which includes texture.fs), use the texture that GL_TEXTURE0 points to
+        //         glBindTexture(GL_TEXTURE_2D, getCaged.getId()); // Make the current texture (GL_TEXTURE0) point to the loaded texture
+        //         mod->render();
+        //         // typically do this to prevent confusion:
+        //         glBindTexture(GL_TEXTURE_2D, 0); // unbind
+        //         glBindVertexArray(0);
+        //
+        //     }
+        //     else {
+        //         return 1;
+        //     }
+        // }
+#pragma endregion
+
+
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);

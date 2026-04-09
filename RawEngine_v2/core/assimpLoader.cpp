@@ -1,18 +1,22 @@
 #include "assimpLoader.h"
+
+#include <memory>
+
 #include "mesh.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
+using sPtr = std::shared_ptr<core::Model>;
 
 namespace core {
-    Model AssimpLoader::loadModel(const std::string& path) {
+    sPtr AssimpLoader::loadModel(const std::string& path) {
         Assimp::Importer import;
         const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenNormals);
 
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             printf("Error: %s\n", import.GetErrorString());
-            return Model({});
+            return sPtr({});
         }
 
         std::string directory = path.substr(0, path.find_last_of('/'));

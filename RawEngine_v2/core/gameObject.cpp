@@ -4,6 +4,9 @@
 
 namespace core {
 
+    void gameObject::render() {
+        model.render();
+    }
     void gameObject::translate(glm::vec3 translation) {
         model.translate(translation);
     }

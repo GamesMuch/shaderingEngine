@@ -18,10 +18,10 @@ namespace core {
         ModelType ModelType = ModelType::Object3d;
         std::string ModelName = "Default";
 
-        std::shared_ptr<Model> model;
+        sPtr model;
         unsigned int shaderProgram;
 
-        gameObject(std::shared_ptr<Model> modl) : model(modl){}
+        gameObject(sPtr modl) : model(modl){}
 
         void render();
         void translate(glm::vec3 translate);

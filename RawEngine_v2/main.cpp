@@ -114,7 +114,7 @@ void processInput(GLFWwindow *window) {
 shared_Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
-core::gameObject CreateObject(core::Model gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
+core::gameObject CreateObject(sPtr gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
 
     core::gameObject object = gameModel;
     object.CreateGameObject(gameObjectName, Position, Scale, Rotation);
@@ -276,9 +276,9 @@ int main() {
 
     //Initialize gameModels
 
-    core::Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
-    core::Model Sphere = CreateModel("models/sphere.fbx");
-    core::Model Fish = CreateModel("models/fish.obj");
+    sPtr SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
+    sPtr Sphere = CreateModel("models/sphere.fbx");
+    sPtr Fish = CreateModel("models/fish.obj");
 
     //FirstScene
 #pragma region FirstScene
@@ -291,7 +291,7 @@ int main() {
         CreateObject(SuzanneMonkey, "Monkey1", Vector3(2)),
         CreateObject(Sphere, "Ball1", Vector3(5,-2,-4))
             );
-
+/*
     core::Mesh otherQuad = core::Mesh::generateQuad();
     core::Model quad2Model({otherQuad});
     quad2Model.translate(glm::vec3(0, 0, 0));
@@ -362,11 +362,11 @@ int main() {
     Scene2.emplace_back(&light);
 
 #pragma endregion SecondScene
-
-    core::Model lightOrb = CreateModel("models/sphere.fbx");
-    lightOrb.translate(LightDirection);
-    lightOrb.scale(glm::vec3(0.1,0.1,0.1));
-    lightOrb.ModelName = "LightOrb";
+*/
+    sPtr lightOrb = CreateModel("models/sphere.fbx");
+    lightOrb -> translate(LightDirection);
+    lightOrb -> scale(glm::vec3(0.1,0.1,0.1));
+    lightOrb -> ModelName = "LightOrb";
 
     float quadVertices[] = {
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -588,8 +588,8 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glUseProgram(modelLightShaderProgram);
         glBindVertexArray(0);
         glActiveTexture(GL_TEXTURE0);
-        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
-        lightOrb.render();
+        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb -> getModelMatrix()));
+        lightOrb -> render();
         glBindVertexArray(0);
 
         for (GameObject obj : ObjectScene.getObjects()) {

@@ -17,7 +17,7 @@ namespace core {
         std::string ModelName = "Default";
 
         Model model;
-        unsigned int shaderProgram;
+        unsigned int modelShaderProgram;
 
         gameObject(Model modl) : model(modl){}
 
@@ -26,7 +26,7 @@ namespace core {
         void rotate(glm::vec3 axis, float radians);
         void scale(glm::vec3 scale);
         glm::mat4 getModelMatrix();
-        void CreateGameObject(std::string Name,glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation = glm::vec3(0,0,0));
+        void CreateGameObject(std::string Name, unsigned int shaderProgram,glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation = glm::vec3(0,0,0));
         void CreateQuad(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale);
     };
 }

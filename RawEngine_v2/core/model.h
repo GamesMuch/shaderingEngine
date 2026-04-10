@@ -15,11 +15,6 @@ namespace core {
         glm::mat4 modelMatrix;
     public:
         Model(std::vector<Mesh> meshes) : meshes(meshes), modelMatrix(1) {}
-        ~Model() { printf("Model was destroyed %s!\n", ModelName.c_str()); }
-        enum class ModelType {Object2d,Object3d};
-        std::string ModelName;
-        ModelType type;
-
 
         void render();
         // GLuint getVAO();

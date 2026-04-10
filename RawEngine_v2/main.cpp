@@ -114,10 +114,10 @@ void processInput(GLFWwindow *window) {
 Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
-core::gameObject CreateObject(sPtr gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
+core::gameObject CreateObject(Model gameModel, unsigned int shaderProgram, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
 
     core::gameObject object = gameModel;
-    object.CreateGameObject(gameObjectName, Position, Scale, Rotation);
+    object.CreateGameObject(gameObjectName, shaderProgram, Position, Scale, Rotation);
     return object;
 }
 void framebufferSizeCallback(GLFWwindow *window,
@@ -276,21 +276,22 @@ int main() {
 
     //Initialize gameModels
 
-    sPtr SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
-    sPtr Sphere = CreateModel("models/sphere.fbx");
-    sPtr Fish = CreateModel("models/fish.obj");
+    Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
+    Model Sphere = CreateModel("models/sphere.fbx");
+    Model Fish = CreateModel("models/fish.obj");
 
     //FirstScene
 #pragma region FirstScene
 
-    GameObject FirstObject = CreateObject(Fish, "Fish object", Vector3(0,0,0), Vector3(5,5,1));
-    FirstObject.shaderProgram = modelLightShaderProgram;
-    SceneGameObject.emplace_back(&FirstObject);
+    // GameObject FirstObject = CreateObject(Fish, "Fish object", Vector3(0,0,0), Vector3(5,5,1));
+    // FirstObject.shaderProgram = modelLightShaderProgram;
+    // SceneGameObject.emplace_back(&FirstObject);
 
     Scene ObjectScene = Scene(
-        CreateObject(SuzanneMonkey, "Monkey1", Vector3(2)),
-        CreateObject(Sphere, "Ball1", Vector3(5,-2,-4))
+        CreateObject(SuzanneMonkey, modelLightShaderProgram, "Monkey1", Vector3(2)),
+        CreateObject(Sphere, modelLightShaderProgram ,"Ball1", Vector3(5,-2,-4))
             );
+#pragma endregion
 /*
     core::Mesh otherQuad = core::Mesh::generateQuad();
     core::Model quad2Model({otherQuad});
@@ -363,10 +364,10 @@ int main() {
 
 #pragma endregion SecondScene
 */
-    Model lightOrb = CreateModel("models/sphere.fbx");
-    lightOrb -> translate(LightDirection);
-    lightOrb -> scale(glm::vec3(0.1,0.1,0.1));
-    lightOrb -> ModelName = "LightOrb";
+    // Model lightOrb = CreateModel("models/sphere.fbx");
+    // lightOrb.translate(LightDirection);
+    // lightOrb.scale(glm::vec3(0.1,0.1,0.1));
+    // lightOrb. = "LightOrb";
 
     float quadVertices[] = {
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -585,25 +586,25 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         //Light
         // lightOrb.translate(LightDirection);
 
-        glUseProgram(modelLightShaderProgram);
-        glBindVertexArray(0);
-        glActiveTexture(GL_TEXTURE0);
-        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb -> getModelMatrix()));
-        lightOrb -> render();
-        glBindVertexArray(0);
+        // glUseProgram(modelLightShaderProgram);
+        // glBindVertexArray(0);
+        // glActiveTexture(GL_TEXTURE0);
+        // glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
+        // lightOrb.render();
+        // glBindVertexArray(0);
 
         for (GameObject obj : ObjectScene.getObjects()) {
-            glUseProgram(obj.shaderProgram);
+            glUseProgram(obj.modelShaderProgram);
             glBindVertexArray(0);
             glActiveTexture(GL_TEXTURE0);
-            glUniformMatrix4fv(glGetUniformLocation(obj.shaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(projection * view * obj.getModelMatrix()));
+            glUniformMatrix4fv(glGetUniformLocation(obj.modelShaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(projection * view * obj.getModelMatrix()));
 
-            if (obj.shaderProgram == modelLightShaderProgram) {
-                glUniform3f(glGetUniformLocation(obj.shaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
-                glUniform1i(glGetUniformLocation(obj.shaderProgram,"lightType"),LightType);
-                glUniform3f(glGetUniformLocation(obj.shaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
-                glUniform3f(glGetUniformLocation(obj.shaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
-                glUniform3f(glGetUniformLocation(obj.shaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
+            if (obj.modelShaderProgram == modelLightShaderProgram) {
+                glUniform3f(glGetUniformLocation(obj.modelShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
+                glUniform1i(glGetUniformLocation(obj.modelShaderProgram,"lightType"),LightType);
+                glUniform3f(glGetUniformLocation(obj.modelShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
+                glUniform3f(glGetUniformLocation(obj.modelShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
+                glUniform3f(glGetUniformLocation(obj.modelShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
             }
             obj.render();
 

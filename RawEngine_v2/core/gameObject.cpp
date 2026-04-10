@@ -26,16 +26,18 @@ namespace core {
         return model.getModelMatrix();
     }
 
-    void gameObject::CreateGameObject(std::string Name, glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation) {
-        model.ModelName = Name;
-        model.translate(Transform);
+    void gameObject::CreateGameObject(std::string Name, unsigned int shaderProgram, glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation) {
+        ModelName = Name;
+        modelShaderProgram = shaderProgram;
+        ModelType = ModelType::Object3d;
+
+        translate(Transform);
         // Simple rotatation math
         float Radian = Math::Dot(Vec3(0), Rotation);
-        Vec3 Axis = Math::Cross(Vec3(0), Rotation);
+        Vec3 Axis = normalize(Math::Cross(Vec3(0), Rotation));
+        rotate(Axis, Radian);
 
-
-
-        model.scale(Scale);
+        scale(Scale);
     }
     void gameObject::CreateQuad(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale) {
         Mesh::generateQuad();

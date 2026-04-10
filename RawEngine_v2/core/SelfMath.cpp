@@ -1,5 +1,4 @@
-﻿#include "glm/detail/type_quat.hpp"
-#include "SelfMath.h"
+﻿#include "SelfMath.h"
 
 using Vec3 = glm::vec3;
 

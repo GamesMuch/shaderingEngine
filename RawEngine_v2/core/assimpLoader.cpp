@@ -12,13 +12,13 @@ namespace core {
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             printf("Error: %s\n", import.GetErrorString());
-            return Model({});
+            return {{}};
         }
 
         std::string directory = path.substr(0, path.find_last_of('/'));
         std::vector<Mesh> meshes;
         processNode(scene->mRootNode, scene, meshes);
-        return Model(meshes);
+        return {meshes};
     }
 
     void AssimpLoader::processNode(aiNode *node, const aiScene *scene, std::vector<Mesh>& meshes) {

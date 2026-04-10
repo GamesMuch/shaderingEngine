@@ -1,7 +1,6 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <vector>
 #include <glm/ext/matrix_float4x4.hpp>
 #include "mesh.h"

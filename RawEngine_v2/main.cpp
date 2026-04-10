@@ -114,9 +114,9 @@ void processInput(GLFWwindow *window) {
 Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
-core::gameObject CreateObject(Model gameModel, unsigned int shaderProgram, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
+GameObject CreateObject(Model gameModel, unsigned int shaderProgram, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
 
-    core::gameObject object = gameModel;
+    GameObject object = gameModel;
     object.CreateGameObject(gameObjectName, shaderProgram, Position, Scale, Rotation);
     return object;
 }
@@ -276,9 +276,9 @@ int main() {
 
     //Initialize gameModels
 
-    Model SuzanneMonkey = CreateModel("models/nonormalmonkey.obj");
-    Model Sphere = CreateModel("models/sphere.fbx");
-    Model Fish = CreateModel("models/fish.obj");
+    Model SuzanneMonkey = core::AssimpLoader::loadModel("models/nonormalmonkey.obj");
+    Model Sphere = core::AssimpLoader::loadModel("models/sphere.fbx");
+    Model Fish = core::AssimpLoader::loadModel("models/fish.obj");
 
     //FirstScene
 #pragma region FirstScene
@@ -288,7 +288,7 @@ int main() {
     // SceneGameObject.emplace_back(&FirstObject);
 
     Scene ObjectScene = Scene(
-        CreateObject(SuzanneMonkey, modelLightShaderProgram, "Monkey1", Vector3(2)),
+        CreateObject(CreateModel("models/nonormalmonkey.obj"), modelLightShaderProgram, "Monkey1", Vector3(2)),
         CreateObject(Sphere, modelLightShaderProgram ,"Ball1", Vector3(5,-2,-4))
             );
 #pragma endregion
@@ -499,18 +499,18 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         ImGui::Checkbox("Start Editing", &check);
 
         if  (check) {
-            if (ImGui::Button("Swap Scenes!"))
-            {
-                printf("Flipping Scene!\n");
-                if (ActiveScene == "Scene1") {
-                    ActiveScene = "Scene2";
-                    CurrentScene = &Scene2;
-                }
-                else if (ActiveScene == "Scene2") {
-                    ActiveScene = "Scene1";
-                    CurrentScene = &Scene1;
-                }
-            }
+            // if (ImGui::Button("Swap Scenes!"))
+            // {
+            //     printf("Flipping Scene!\n");
+            //     if (ActiveScene == "Scene1") {
+            //         ActiveScene = "Scene2";
+            //         CurrentScene = &Scene2;
+            //     }
+            //     else if (ActiveScene == "Scene2") {
+            //         ActiveScene = "Scene1";
+            //         CurrentScene = &Scene1;
+            //     }
+            // }
             ImGui::SliderInt("LightType", &LightType, 0,1);
             // ImGui::SliderFloat("Monkey Spin Speed", &rotationStrength, 0.0f, 360.0f);
             ImGui::SliderFloat3("LightDirection", &LightDirection.x, -10,10);
@@ -594,18 +594,20 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         // glBindVertexArray(0);
 
         for (GameObject obj : ObjectScene.getObjects()) {
-            glUseProgram(obj.modelShaderProgram);
+
+            glUseProgram(modelLightShaderProgram);
             glBindVertexArray(0);
             glActiveTexture(GL_TEXTURE0);
-            glUniformMatrix4fv(glGetUniformLocation(obj.modelShaderProgram, "mvpMatrix"), 1, GL_FALSE, glm::value_ptr(projection * view * obj.getModelMatrix()));
+            // GLint matrix = glGetUniformLocation(obj.modelShaderProgram, "mvpMatrix");
+            glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * obj.getModelMatrix()));
 
-            if (obj.modelShaderProgram == modelLightShaderProgram) {
-                glUniform3f(glGetUniformLocation(obj.modelShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
-                glUniform1i(glGetUniformLocation(obj.modelShaderProgram,"lightType"),LightType);
-                glUniform3f(glGetUniformLocation(obj.modelShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
-                glUniform3f(glGetUniformLocation(obj.modelShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
-                glUniform3f(glGetUniformLocation(obj.modelShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
-            }
+
+            glUniform3f(glGetUniformLocation(modelLightShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
+            glUniform1i(glGetUniformLocation(modelLightShaderProgram,"lightType"),LightType);
+            glUniform3f(glGetUniformLocation(modelLightShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
+            glUniform3f(glGetUniformLocation(modelLightShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
+            glUniform3f(glGetUniformLocation(modelLightShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
+
             obj.render();
 
             glBindVertexArray(0);
@@ -652,8 +654,6 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         //     }
         // }
 #pragma endregion
-
-
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);

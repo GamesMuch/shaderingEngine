@@ -1,11 +1,11 @@
 ﻿#pragma once
 
-#include <memory>
-#include <glm/vec3.hpp>
-#include <glm/ext/matrix_transform.hpp>
 
-#include "assimpLoader.h"
+#include <glm/vec3.hpp>
 #include "model.h"
+#include <string>
+
+using string = std::string;
 
 namespace core {
 
@@ -17,7 +17,7 @@ namespace core {
         std::string ModelName = "Default";
 
         Model model;
-        unsigned int modelShaderProgram;
+        unsigned int modelShaderProgram = 0;
 
         gameObject(Model modl) : model(modl){}
 
@@ -26,7 +26,7 @@ namespace core {
         void rotate(glm::vec3 axis, float radians);
         void scale(glm::vec3 scale);
         glm::mat4 getModelMatrix();
-        void CreateGameObject(std::string Name, unsigned int shaderProgram,glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation = glm::vec3(0,0,0));
-        void CreateQuad(std::string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale);
+        void CreateGameObject(string Name, unsigned int shaderProgram,glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation = glm::vec3(0,0,0));
+        void CreateQuad(string Name, glm::vec3 Transform, glm::vec3 Rotation, glm::vec3 Scale);
     };
 }

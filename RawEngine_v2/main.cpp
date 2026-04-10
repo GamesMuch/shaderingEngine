@@ -10,6 +10,7 @@
 #include "core/texture.h"
 #include "core/gameObject.h"
 #include <glm/gtc/matrix_access.hpp> // to extract columns from matrices
+#include <utility>
 
 #include "core/Scene.h"
 
@@ -117,6 +118,7 @@ Model CreateModel(std::string name) {
 GameObject CreateObject(Model gameModel, unsigned int shaderProgram, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
 
     GameObject object = gameModel;
+    object.model = gameModel;
     object.CreateGameObject(gameObjectName, shaderProgram, Position, Scale, Rotation);
     return object;
 }
@@ -291,6 +293,9 @@ int main() {
         CreateObject(CreateModel("models/nonormalmonkey.obj"), modelLightShaderProgram, "Monkey1", Vector3(2)),
         CreateObject(Sphere, modelLightShaderProgram ,"Ball1", Vector3(5,-2,-4))
             );
+    GameObject objeccc = CreateObject(SuzanneMonkey, modelLightShaderProgram, "Monkey2", Vector3(0));
+    printf("%s\n", objeccc.ModelName.c_str());
+    Model vev = SuzanneMonkey;
 #pragma endregion
 /*
     core::Mesh otherQuad = core::Mesh::generateQuad();
@@ -593,6 +598,8 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         // lightOrb.render();
         // glBindVertexArray(0);
 
+        /*
+
         for (GameObject obj : ObjectScene.getObjects()) {
 
             glUseProgram(modelLightShaderProgram);
@@ -612,6 +619,26 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
             glBindVertexArray(0);
         }
+        */
+
+        glUseProgram(modelLightShaderProgram);
+        glBindVertexArray(0);
+        glActiveTexture(GL_TEXTURE0);
+        // GLint matrix = glGetUniformLocation(obj.modelShaderProgram, "mvpMatrix");
+        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * objeccc.getModelMatrix()));
+
+
+        glUniform3f(glGetUniformLocation(modelLightShaderProgram,"lightDirection"),LightDirection.x, LightDirection.y, LightDirection.z);
+        glUniform1i(glGetUniformLocation(modelLightShaderProgram,"lightType"),LightType);
+        glUniform3f(glGetUniformLocation(modelLightShaderProgram, "lightColor"), LightColor.x,LightColor.y,LightColor.z);
+        glUniform3f(glGetUniformLocation(modelLightShaderProgram,"ambientColor"), AmbientColor.x, AmbientColor.y, AmbientColor.z);
+        glUniform3f(glGetUniformLocation(modelLightShaderProgram, "cameraPos"), cameraPos.x, cameraPos.y, cameraPos.z);
+
+        objeccc.render();
+
+        glBindVertexArray(0);
+
+        //TODO: So issue is that getModelMatrix (and render) do not get taken from the model, thus no rendering :wilted rose emoji:
 #pragma region OldSceneUser
         //
         // for (core::Model* mod : *CurrentScene) {
@@ -655,6 +682,7 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         // }
 #pragma endregion
 
+#pragma region Post Processing
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -682,6 +710,8 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         glBindVertexArray(quadVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
+
+#pragma endregion
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

@@ -20,6 +20,6 @@ namespace core {
         void translate(glm::vec3 translation);
         void rotate(glm::vec3 axis, float radians);
         void scale(glm::vec3 scale);
-        glm::mat4 getModelMatrix() const;
+        glm::mat4 getModelMatrix();
     };
 }

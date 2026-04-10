@@ -23,7 +23,7 @@ namespace core {
         modelMatrix = glm::scale(modelMatrix, scale);
     }
 
-    glm::mat4 Model::getModelMatrix() const {
+    glm::mat4 Model::getModelMatrix() {
         return this->modelMatrix;
     }
 }

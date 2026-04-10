@@ -25,7 +25,8 @@ namespace core {
         model.scale(translation);
     }
     glm::mat4 gameObject::getModelMatrix() {
-        return model.getModelMatrix();
+        glm::mat4 matrix = model.getModelMatrix();
+        return matrix;
     }
 
     void gameObject::CreateGameObject(string Name, unsigned int shaderProgram, glm::vec3 Transform, glm::vec3 Scale, glm::vec3 Rotation) {

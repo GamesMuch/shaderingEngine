@@ -35,7 +35,7 @@ using Vector4 = glm::vec4;
 using Vector3 = glm::vec3;
 using Vector2 = glm::vec2;
 using Scene = core::Scene;
-using shared_Model = std::shared_ptr<core::Model>;
+using Model = core::Model;
 
 
 int g_width = 800;
@@ -111,7 +111,7 @@ void processInput(GLFWwindow *window) {
         Offset.y = cameraSpeed;
 #pragma endregion
 }
-shared_Model CreateModel(std::string name) {
+Model CreateModel(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
 core::gameObject CreateObject(sPtr gameModel, std::string gameObjectName, glm::vec3 Position, glm::vec3 Scale = glm::vec3(1), glm::vec3 Rotation = glm::vec3(0)) {
@@ -363,7 +363,7 @@ int main() {
 
 #pragma endregion SecondScene
 */
-    sPtr lightOrb = CreateModel("models/sphere.fbx");
+    Model lightOrb = CreateModel("models/sphere.fbx");
     lightOrb -> translate(LightDirection);
     lightOrb -> scale(glm::vec3(0.1,0.1,0.1));
     lightOrb -> ModelName = "LightOrb";

@@ -7,8 +7,6 @@
 #include "assimpLoader.h"
 #include "model.h"
 
-using sPtr = std::shared_ptr<core::Model>;
-
 namespace core {
 
     class gameObject {
@@ -18,10 +16,10 @@ namespace core {
         ModelType ModelType = ModelType::Object3d;
         std::string ModelName = "Default";
 
-        sPtr model;
+        Model model;
         unsigned int shaderProgram;
 
-        gameObject(sPtr modl) : model(modl){}
+        gameObject(Model modl) : model(modl){}
 
         void render();
         void translate(glm::vec3 translate);

@@ -21,6 +21,8 @@ set(IMGUI_SOURCES
         core/gameObject.cpp
         core/Scene.h
         core/Scene.cpp
+        core/SelfMath.cpp
+        core/SelfMath.h
 )
 
 add_executable(RawEngine main.cpp
@@ -32,6 +34,8 @@ add_executable(RawEngine main.cpp
         core/vertex.h
         core/model.cpp
         core/model.h
+        core/SelfMath.cpp
+        core/SelfMath.h
 )
 
 add_custom_command(

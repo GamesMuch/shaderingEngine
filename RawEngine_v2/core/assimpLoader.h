@@ -10,7 +10,7 @@ namespace core {
 
     class AssimpLoader {
     public:
-        static std::shared_ptr<Model> loadModel(const std::string& path);
+        static Model loadModel(const std::string& path);
     private:
         static void processNode(aiNode* node, const aiScene* scene, std::vector<Mesh>& meshes);
         static Mesh processMesh(aiMesh *mesh, const aiScene *scene);

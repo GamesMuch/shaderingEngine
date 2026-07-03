@@ -11,6 +11,9 @@
 #include "core/gameObject.h"
 #include <glm/gtc/matrix_access.hpp> // to extract columns from matrices
 
+#include "../../../Documents/ShaderEngine1/vcpkg/installed/x64-windows/include/glm/vec3.hpp"
+#include "../../../Documents/ShaderEngine1/vcpkg/installed/x64-windows/include/glm/detail/setup.hpp"
+
 //#define MAC_CLION
 #define VSTUDIO
 

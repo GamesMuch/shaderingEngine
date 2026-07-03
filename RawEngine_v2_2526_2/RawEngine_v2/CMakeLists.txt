@@ -17,8 +17,6 @@ set(IMGUI_SOURCES
         imgui/backends/imgui_impl_opengl3.cpp
         core/texture.cpp
         core/texture.h
-        core/GameObject.h
-        core/gameObject.cpp
         core/Scene.h
         core/Scene.cpp
 )

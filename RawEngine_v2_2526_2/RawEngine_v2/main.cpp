@@ -8,7 +8,6 @@
 #include "core/mesh.h"
 #include "core/assimpLoader.h"
 #include "core/texture.h"
-#include "core/gameObject.h"
 #include <glm/gtc/matrix_access.hpp> // to extract columns from matrices
 
 #include "../../../Documents/ShaderEngine1/vcpkg/installed/x64-windows/include/glm/vec3.hpp"

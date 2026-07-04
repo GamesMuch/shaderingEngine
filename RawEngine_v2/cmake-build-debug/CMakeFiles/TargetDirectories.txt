@@ -1,0 +1,4 @@
+C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/RawEngine.dir
+C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/copy_shaders.dir
+C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

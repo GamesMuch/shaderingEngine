@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/RawEngine.dir/core/Scene.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/Scene.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/SelfMath.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/SelfMath.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/assimpLoader.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/assimpLoader.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/gameObject.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/gameObject.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/mesh.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/mesh.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/model.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/model.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/core/texture.cpp.obj"
+  "CMakeFiles/RawEngine.dir/core/texture.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/backends/imgui_impl_glfw.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/backends/imgui_impl_glfw.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/backends/imgui_impl_opengl3.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/backends/imgui_impl_opengl3.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/imgui.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/imgui.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_demo.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_demo.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_draw.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_draw.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_tables.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_tables.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_widgets.cpp.obj"
+  "CMakeFiles/RawEngine.dir/imgui/imgui_widgets.cpp.obj.d"
+  "CMakeFiles/RawEngine.dir/main.cpp.obj"
+  "CMakeFiles/RawEngine.dir/main.cpp.obj.d"
+  "RawEngine.exe"
+  "RawEngine.exe.manifest"
+  "RawEngine.lib"
+  "RawEngine.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/RawEngine.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

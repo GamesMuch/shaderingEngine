@@ -691,7 +691,7 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
                     vec3 rayDir = glm::normalize(cameraDirection + u * cameraRight +v * cameraUp);
                     ray r(camPos, rayDir);
                     pixels[j * g_width +i] = sendRay(r, orb.getPos(), orb.getRadius());
-
+                    //Help
 
                     // pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
                     // pixels[j * g_width + i] = glm::vec4(1,0,0,1);

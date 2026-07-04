@@ -1,0 +1,69 @@
+#version 400 core
+uniform vec3 lightDirection; // world space
+uniform int lightType; // 0 = directional, 1=point
+uniform vec3 ambientColor;
+uniform vec3 lightColor;
+uniform vec3 cameraPos;
+
+// TODO: add other stuff. sharpness, albedo, light color, .... etc.
+
+vec3 ambient = vec3(0,0,0.15);
+
+
+out vec4 FragColor;
+in vec3 fPos;
+in vec3 fNor; // should be in world space
+in vec2 uv;
+
+void main()
+{
+    vec3 toLight = normalize(lightDirection);
+    float dotAngle;
+    float lightAttenuation = 1; // high numbers give low light
+
+    if (lightType == 1) { // point light: interpret "lightDirection" as light position
+
+        toLight = lightDirection - fPos; // from current fragment to light position
+
+        float distance = length(toLight); // Pythagoras :-)
+        lightAttenuation = 1/(distance + 0.004 * pow(distance,2) + pow(0.004,2)); // feel free to experiment with different functions here
+        toLight = normalize(toLight);
+        dotAngle = max(dot(fNor, toLight),0);
+    }
+    else if (lightType == 0){
+        dotAngle = max(dot(fNor,toLight),0);
+    }
+    else{
+        dotAngle = 1;
+    }
+
+
+
+    // Attenuation should be something like: 1/1+distance*constant+ distance^2*constant^2
+    vec3 viewDir = normalize(cameraPos - fPos);
+    vec3 reflectDir = reflect(-toLight, normalize(fNor));
+
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
+
+    vec3 specular = spec * lightColor;
+
+   vec3 color = ambientColor + ((dotAngle * lightColor.xyz) + specular) * lightAttenuation;
+
+   FragColor = vec4(color,1.0);
+
+   // SPECULAR!!!!
+   // SPECULAR IS Dot product camera direction and light reflect()
+   // Then do that ^ num to get intensity
+   // Feed in camera, figure out direction from ts spot
+   // U got this gng
+
+
+   // TODO: specular (requires camera pos)
+   // TODO: ambient, light color, albedo, maybe even textures... <- this is the fun + easy bit
+   // Was indeed fun! Is bit ourple :)
+}
+
+
+// todo: attenuation
+// ...calculate toLight properly:
+//FragColor = vec4(fNor.x, fNor.y, fNor.z, 1);

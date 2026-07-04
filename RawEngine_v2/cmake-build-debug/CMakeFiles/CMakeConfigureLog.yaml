@@ -1,0 +1,401 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.26100 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x64
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      CMakeCCompilerId.c
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCCompilerId.exe 
+      CMakeCCompilerId.obj 
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/4.0.2/CompilerIdC/CMakeCCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:1322 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        main.c
+        Note: including file: C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) C/C++ Optimizing Compiler Version 19.41.34120 for x64
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      CMakeCXXCompilerId.cpp
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+      
+      /out:CMakeCXXCompilerId.exe 
+      CMakeCXXCompilerId.obj 
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/4.0.2/CompilerIdCXX/CMakeCXXCompilerId.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:1322 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        main.c
+        Note: including file: C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\ShowIncludes\\foo.h
+        
+      Found prefix "Note: including file: "
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zu2n36"
+      binary: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zu2n36"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-zu2n36'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_3938c\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_3938c.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_3938c.dir\\build
+        Building C object CMakeFiles/cmTC_3938c.dir/CMakeCCompilerABI.c.obj
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_3938c.dir\\CMakeCCompilerABI.c.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-zu2n36 --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm243E.tmp
+        CMakeCCompilerABI.c
+        Linking C executable cmTC_3938c.exe
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_3938c.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_3938c.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm250A.tmp
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_3938c.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_3938c.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_3938c.dir/manifest.res CMakeFiles\\cmTC_3938c.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_3938c.dir\\objects1.rsp /out:cmTC_3938c.exe /implib:cmTC_3938c.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-zu2n36\\cmTC_3938c.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_3938c.dir/intermediate.manifest CMakeFiles\\cmTC_3938c.dir/manifest.res
+        MT:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_3938c.dir/intermediate.manifest /out:CMakeFiles\\cmTC_3938c.dir/embed.manifest /notify_update
+        RC Pass 2:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_3938c.dir/manifest.res CMakeFiles\\cmTC_3938c.dir/manifest.rc
+        FINAL LINK:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_3938c.dir\\objects1.rsp /out:cmTC_3938c.exe /implib:cmTC_3938c.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-zu2n36\\cmTC_3938c.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_3938c.dir/intermediate.manifest CMakeFiles\\cmTC_3938c.dir/manifest.res
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/PROGRA~1/MICROS~2/2022/COMMUN~1/VC/Tools/MSVC/1441~1.341/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:270 (cmake_determine_linker_id)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/PROGRA~1/MICROS~2/2022/COMMUN~1/VC/Tools/MSVC/1441~1.341/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ljvf5b"
+      binary: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ljvf5b"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-ljvf5b'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_c5dac\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_c5dac.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_c5dac.dir\\build
+        Building CXX object CMakeFiles/cmTC_c5dac.dir/CMakeCXXCompilerABI.cpp.obj
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_c5dac.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ljvf5b --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm299D.tmp
+        CMakeCXXCompilerABI.cpp
+        Linking CXX executable cmTC_c5dac.exe
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_c5dac.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c5dac.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm2AA8.tmp
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_c5dac.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_c5dac.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c5dac.dir/manifest.res CMakeFiles\\cmTC_c5dac.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c5dac.dir\\objects1.rsp /out:cmTC_c5dac.exe /implib:cmTC_c5dac.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ljvf5b\\cmTC_c5dac.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c5dac.dir/intermediate.manifest CMakeFiles\\cmTC_c5dac.dir/manifest.res
+        MT:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_c5dac.dir/intermediate.manifest /out:CMakeFiles\\cmTC_c5dac.dir/embed.manifest /notify_update
+        RC Pass 2:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c5dac.dir/manifest.res CMakeFiles\\cmTC_c5dac.dir/manifest.rc
+        FINAL LINK:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c5dac.dir\\objects1.rsp /out:cmTC_c5dac.exe /implib:cmTC_c5dac.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-ljvf5b\\cmTC_c5dac.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c5dac.dir/intermediate.manifest CMakeFiles\\cmTC_c5dac.dir/manifest.res
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/PROGRA~1/MICROS~2/2022/COMMUN~1/VC/Tools/MSVC/1441~1.341/bin/Hostx64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake:36 (message)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake:270 (cmake_determine_linker_id)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/PROGRA~1/MICROS~2/2022/COMMUN~1/VC/Tools/MSVC/1441~1.341/bin/Hostx64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.41.34120.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CheckCSourceCompiles.cmake:58 (cmake_check_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:97 (check_c_source_compiles)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "CMakeLists.txt:63 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bhl39h"
+      binary: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bhl39h"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-bhl39h'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_f7ad8\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_f7ad8.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_f7ad8.dir\\build
+        Building C object CMakeFiles/cmTC_f7ad8.dir/src.c.obj
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_f7ad8.dir\\src.c.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bhl39h --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm3093.tmp
+        src.c
+        C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bhl39h\\src.c(1): fatal error C1083: Cannot open include file: 'pthread.h': No such file or directory
+        NMAKE : fatal error U1077: '"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_f7ad8.dir\\src.c.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-bhl39h --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm3093.tmp' : return code '0x2'
+        Stop.
+        NMAKE : fatal error U1077: '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_f7ad8.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_f7ad8.dir\\build' : return code '0x2'
+        Stop.
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:112 (check_library_exists)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "CMakeLists.txt:63 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-3s5prk"
+      binary: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-3s5prk"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-3s5prk'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_cd20d\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_cd20d.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_cd20d.dir\\build
+        Building C object CMakeFiles/cmTC_cd20d.dir/CheckFunctionExists.c.obj
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_cd20d.dir\\CheckFunctionExists.c.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-3s5prk --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm32B5.tmp
+        CheckFunctionExists.c
+        Linking C executable cmTC_cd20d.exe
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_cd20d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_cd20d.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm33A1.tmp
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_cd20d.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_cd20d.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_cd20d.dir/manifest.res CMakeFiles\\cmTC_cd20d.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_cd20d.dir\\objects1.rsp /out:cmTC_cd20d.exe /implib:cmTC_cd20d.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-3s5prk\\cmTC_cd20d.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_cd20d.dir/intermediate.manifest CMakeFiles\\cmTC_cd20d.dir/manifest.res
+        LINK Pass 1: command "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_cd20d.dir\\objects1.rsp /out:cmTC_cd20d.exe /implib:cmTC_cd20d.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-3s5prk\\cmTC_cd20d.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_cd20d.dir/intermediate.manifest CMakeFiles\\cmTC_cd20d.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib'
+        NMAKE : fatal error U1077: '"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_cd20d.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_cd20d.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm33A1.tmp' : return code '0xffffffff'
+        Stop.
+        NMAKE : fatal error U1077: '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_cd20d.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_cd20d.dir\\build' : return code '0x2'
+        Stop.
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CheckLibraryExists.cmake:112 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:112 (check_library_exists)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/share/cmake-4.0/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed/x64-windows/share/glfw3/glfw3Config.cmake:2 (find_dependency)"
+      - "C:/Users/Every/Documents/ShaderEngine1/vcpkg/scripts/buildsystems/vcpkg.cmake:900 (_find_package)"
+      - "CMakeLists.txt:63 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-whs0vt"
+      binary: "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-whs0vt"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      VCPKG_INSTALLED_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg/installed"
+      VCPKG_PREFER_SYSTEM_LIBS: "OFF"
+      VCPKG_TARGET_TRIPLET: "x64-windows"
+      Z_VCPKG_ROOT_DIR: "C:/Users/Every/Documents/ShaderEngine1/vcpkg"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-whs0vt'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2025.2.3/bin/cmake/win/x64/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_fc766\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_fc766.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_fc766.dir\\build
+        Building C object CMakeFiles/cmTC_fc766.dir/CheckFunctionExists.c.obj
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_fc766.dir\\CheckFunctionExists.c.obj.d --working-dir=C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-whs0vt --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\Every\\AppData\\Local\\Temp\\nm3611.tmp
+        CheckFunctionExists.c
+        Linking C executable cmTC_fc766.exe
+        	"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_fc766.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_fc766.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm36FC.tmp
+        Visual Studio Incremental Link with embedded manifests
+        Create CMakeFiles\\cmTC_fc766.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_fc766.dir/embed.manifest
+        RC Pass 1:
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_fc766.dir/manifest.res CMakeFiles\\cmTC_fc766.dir/manifest.rc
+        LINK Pass 1:
+        C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_fc766.dir\\objects1.rsp /out:cmTC_fc766.exe /implib:cmTC_fc766.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-whs0vt\\cmTC_fc766.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_fc766.dir/intermediate.manifest CMakeFiles\\cmTC_fc766.dir/manifest.res
+        LINK Pass 1: command "C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_fc766.dir\\objects1.rsp /out:cmTC_fc766.exe /implib:cmTC_fc766.lib /pdb:C:\\Users\\Every\\Documents\\RenderingEngines\\RawEngine_v2_2526_2\\RawEngine_v2\\cmake-build-debug\\CMakeFiles\\CMakeScratch\\TryCompile-whs0vt\\cmTC_fc766.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_fc766.dir/intermediate.manifest CMakeFiles\\cmTC_fc766.dir/manifest.res" failed (exit code 1104) with the following output:
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib'
+        NMAKE : fatal error U1077: '"C:\\Program Files\\JetBrains\\CLion 2025.2.3\\bin\\cmake\\win\\x64\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1941 --intdir=CMakeFiles\\cmTC_fc766.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100226~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_fc766.dir\\objects1.rsp @C:\\Users\\Every\\AppData\\Local\\Temp\\nm36FC.tmp' : return code '0xffffffff'
+        Stop.
+        NMAKE : fatal error U1077: '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_fc766.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_fc766.dir\\build' : return code '0x2'
+        Stop.
+        
+      exitCode: 2
+...

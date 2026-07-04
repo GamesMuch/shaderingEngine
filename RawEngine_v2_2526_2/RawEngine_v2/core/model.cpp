@@ -13,6 +13,7 @@ namespace core {
 
     void Model::translate(glm::vec3 translation) {
         modelMatrix = glm::translate(modelMatrix, translation);
+        position += translation;
     }
 
     void Model::rotate(glm::vec3 axis, float radians) {
@@ -21,9 +22,11 @@ namespace core {
 
     void Model::scale(glm::vec3 scale) {
         modelMatrix = glm::scale(modelMatrix, scale);
+        radius = scale.x/2;
     }
 
     glm::mat4 Model::getModelMatrix() const {
         return this->modelMatrix;
     }
+
 }

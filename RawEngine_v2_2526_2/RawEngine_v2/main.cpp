@@ -260,6 +260,7 @@ int main() {
     //FirstScene
 #pragma region FirstScene
 
+    /*
     core::Mesh otherQuad = core::Mesh::generateQuad();
     core::Model quad2Model({otherQuad});
     quad2Model.translate(glm::vec3(0, 0, 0));
@@ -273,26 +274,29 @@ int main() {
     suzanne.type = core::Model::ModelType::Object3d;
     suzanne.ModelName = "monkey1";
     Scene1.emplace_back(&suzanne);
+    */
 
-    core::Model light = CreateObject("models/sphere.fbx");
-    light.translate(glm::vec3(1,0,0));
-    light.scale(glm::vec3(1,1,1));
-    light.type = core::Model::ModelType::Object3d;
-    light.ModelName = "lightOrb";
-    Scene1.emplace_back(&light);
+    core::Model orb = CreateObject("models/sphere.fbx");
+    orb.translate(glm::vec3(1,0,0));
+    orb.scale(glm::vec3(1,1,1));
+    orb.type = core::Model::ModelType::Object3d;
+    orb.ModelName = "lightOrb";
+    Scene1.emplace_back(&orb);
 
+    /*
     core::Model fish = CreateObject("models/fish.obj");
     fish.translate(glm::vec3(-2,0,3));
     fish.scale(glm::vec3(1.0f,5.0f,1.0f));
     fish.type = core::Model::ModelType::Object3d;
     fish.ModelName = "fish";
     Scene1.emplace_back(&fish);
-
+    */
 
 
 #pragma endregion FirstScene
 
 #pragma region SecondScene
+    /*
     core::Model money2 = CreateObject("models/nonormalmonkey.obj");
     money2.translate(glm::vec3(0,1,3));
     money2.rotate(glm::vec3(0.53f,0.935f,0.235f),240);
@@ -326,15 +330,18 @@ int main() {
     fih.type = core::Model::ModelType::Object3d;
     fih.ModelName = "Fih";
     Scene2.emplace_back(&fih);
+    */
 
-    Scene2.emplace_back(&light);
+    // Scene2.emplace_back(&light);
 
 #pragma endregion SecondScene
 
+    /*
     core::Model lightOrb = CreateObject("models/sphere.fbx");
     lightOrb.translate(LightDirection);
     lightOrb.scale(glm::vec3(0.1,0.1,0.1));
     lightOrb.ModelName = "LightOrb";
+    */
 
     float quadVertices[] = {
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -554,13 +561,13 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         //Light
         // lightOrb.translate(LightDirection);
-
-        glUseProgram(modelLightShaderProgram);
-        glBindVertexArray(0);
-        glActiveTexture(GL_TEXTURE0);
-        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
-        lightOrb.render();
-        glBindVertexArray(0);
+        //
+        // glUseProgram(modelLightShaderProgram);
+        // glBindVertexArray(0);
+        // glActiveTexture(GL_TEXTURE0);
+        // glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
+        // lightOrb.render();
+        // glBindVertexArray(0);
 
         for (core::Model* mod : *CurrentScene) {
 

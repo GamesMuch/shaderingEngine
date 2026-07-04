@@ -11,6 +11,10 @@ namespace core {
     private:
         std::vector<core::Mesh> meshes;
         glm::mat4 modelMatrix;
+        glm::vec3 position = glm::vec3(0);
+        double radius = 0.0;
+
+        // std::vec3<>
     public:
         Model(std::vector<core::Mesh> meshes) : meshes(meshes), modelMatrix(1) {}
         ~Model() { printf("Model was destroyed %s!\n", ModelName.c_str()); }
@@ -25,5 +29,7 @@ namespace core {
         void rotate(glm::vec3 axis, float radians);
         void scale(glm::vec3 scale);
         glm::mat4 getModelMatrix() const;
+
+        bool hit();
     };
 }

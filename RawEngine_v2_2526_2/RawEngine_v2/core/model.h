@@ -22,6 +22,13 @@ namespace core {
         std::string ModelName;
         ModelType type;
 
+        double getRadius() {
+            return radius;
+        }
+        glm::vec3 getPos() {
+            return position;
+        }
+
 
         void render();
         // GLuint getVAO();

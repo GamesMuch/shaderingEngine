@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <glm/detail/func_geometric.inl>
 #include <glm/gtc/type_ptr.hpp>
 #include <fstream>
 #include <sstream>
@@ -8,6 +9,7 @@
 #include "core/mesh.h"
 #include "core/assimpLoader.h"
 #include "core/texture.h"
+#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_access.hpp> // to extract columns from matrices
 
 #include "../../../Documents/ShaderEngine1/vcpkg/installed/x64-windows/include/glm/vec3.hpp"
@@ -561,8 +563,10 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         // here we calculate the camera-to-world matrix:
         glm::mat4 M(1); // identity matrix
         M = glm::translate(M, cameraPos);
-        M = glm::rotate(M, camHeading, glm::vec3(0.0,1.0,0.0));
+        M = glm::rotate(M, camHeading, glm::vec3(0,1,0));
         M = glm::rotate(M, camPitch, glm::vec3(1.0,0.0,0.0));
+
+
 
         // glm::vec4 col1 = glm::column(M,2);
         // printf("Matrix column: (%f,%f,%f,%f)\n",col1.x,col1.y,col1.z,col1.w);

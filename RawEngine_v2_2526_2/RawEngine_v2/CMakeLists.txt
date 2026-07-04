@@ -23,6 +23,8 @@ set(IMGUI_SOURCES
         core/ray.h
         core/color.cpp
         core/color.h
+        core/selfMath.cpp
+        core/selfMath.h
 )
 
 add_executable(RawEngine main.cpp

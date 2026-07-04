@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="8" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/LiveTemplatesHousekeeping/HotspotSessionHintIsShown/@EntryValue" value="true" type="bool" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="RawEngine" targetName="RawEngine" />
+      <config projectName="RawEngine" targetName="copy_shaders" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=C:\Users\Every\Documents\ShaderEngine1\vcpkg\scripts\buildsystems\vcpkg.cmake" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="04824416-ad71-4817-95e8-b2ae48ae744d" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../RawEngine_v2\exportToHTML" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="32TGTc9OPzVx5eZOfYmyf9ABAnk" />
+  <component name="ProjectStatusUIService">{
+  &quot;uiKindId&quot;: &quot;Widget&quot;
+}</component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ File.main.cpp.executor": "Run",
+    "CMake Application.RawEngine.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/Every/Documents/RenderingEngines/RawEngine_v2_2526_2/RawEngine_v2/shaders",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Every\Documents\RenderingEngines\RawEngine_v2_2526_2\RawEngine_v2\shaders" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Every\Documents\RenderingEngines\RawEngine_v2_2526_2\RawEngine_v2\core" />
+      <recent name="C:\Users\Every\Documents\RenderingEngines\RawEngine_v2_2526_2\RawEngine_v2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="C/C++ File.main.cpp">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RawEngine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RawEngine" TARGET_NAME="RawEngine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="RawEngine" RUN_TARGET_NAME="RawEngine">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="copy_shaders" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="RawEngine" TARGET_NAME="copy_shaders" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="light.fragshader" TARGET_NAME="main.cpp" CONFIG_NAME="main.cpp">
+      <option name="sourceFile" value="main.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="C/C++ File.main.cpp" />
+      <item itemvalue="CMake Application.RawEngine" />
+      <item itemvalue="CMake Application.copy_shaders" />
+    </list>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04824416-ad71-4817-95e8-b2ae48ae744d" name="Changes" comment="" />
+      <created>1757437157330</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757437157330</updated>
+      <workItem from="1757437158464" duration="62000" />
+      <workItem from="1757846112411" duration="211000" />
+      <workItem from="1758292404645" duration="393000" />
+      <workItem from="1760342338255" duration="15505000" />
+      <workItem from="1761647895321" duration="11395000" />
+      <workItem from="1761746465788" duration="725000" />
+      <workItem from="1761821113011" duration="4633000" />
+      <workItem from="1761838629993" duration="3440000" />
+      <workItem from="1762030466122" duration="2580000" />
+      <workItem from="1762078214470" duration="9039000" />
+      <workItem from="1762094025977" duration="3614000" />
+      <workItem from="1762097814199" duration="8000" />
+      <workItem from="1763370629652" duration="11625000" />
+      <workItem from="1763715684817" duration="1591000" />
+      <workItem from="1763717325330" duration="11836000" />
+      <workItem from="1764233397910" duration="6763000" />
+      <workItem from="1765469058399" duration="31000" />
+      <workItem from="1765808513995" duration="1623000" />
+      <workItem from="1765885931131" duration="12065000" />
+      <workItem from="1768219596731" duration="13202000" />
+      <workItem from="1768564647135" duration="3410000" />
+      <workItem from="1769777101942" duration="4459000" />
+      <workItem from="1769942017776" duration="2365000" />
+      <workItem from="1772531780684" duration="14856000" />
+      <workItem from="1772547472498" duration="2328000" />
+      <workItem from="1772615033041" duration="19320000" />
+      <workItem from="1772700369851" duration="6296000" />
+      <workItem from="1772712779988" duration="1508000" />
+      <workItem from="1772798233883" duration="229000" />
+      <workItem from="1773390435551" duration="1615000" />
+      <workItem from="1774218521164" duration="164000" />
+      <workItem from="1774276611592" duration="3099000" />
+      <workItem from="1775658514719" duration="2065000" />
+      <workItem from="1775660719862" duration="1897000" />
+      <workItem from="1775662657302" duration="1911000" />
+      <workItem from="1775726792158" duration="13418000" />
+      <workItem from="1775813771339" duration="4309000" />
+      <workItem from="1775818840852" duration="202000" />
+      <workItem from="1775819125136" duration="1518000" />
+      <workItem from="1775820667216" duration="12147000" />
+      <workItem from="1778069328880" duration="2037000" />
+      <workItem from="1778146150172" duration="7963000" />
+      <workItem from="1778222044200" duration="9099000" />
+      <workItem from="1778236657746" duration="4757000" />
+      <workItem from="1779882906390" duration="2393000" />
+      <workItem from="1781441643441" duration="2354000" />
+      <workItem from="1783076511532" duration="399000" />
+      <workItem from="1783077038449" duration="1121000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.frag" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.fs" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

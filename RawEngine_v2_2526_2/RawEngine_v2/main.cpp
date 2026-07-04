@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <iostream>
+
 #include "core/mesh.h"
 #include "core/assimpLoader.h"
 #include "core/texture.h"
@@ -178,6 +180,7 @@ glm::vec4 sendRay(ray r, vec3 point, double size) {
     auto t = hasHitSphere(point, size, r);
     if (t > 0.0) {
         vec3 N = glm::normalize(r.at(t) - vec3(0,0,-1));
+        return glm::vec4(N * 0.5f + 0.5f,1);
         return glm::vec4(0.5f*color(N.x + 1, N.y + 1, N.z + 1),1);
     }
     vec3 unit_direction = glm::normalize(r.direction());
@@ -331,7 +334,7 @@ int main() {
     // Scene1.emplace_back(&suzanne);
 
     core::Model orb = CreateObject("models/sphere.fbx");
-    orb.translate(glm::vec3(0,0,0));
+    orb.translate(glm::vec3(0,0,-7));
     orb.scale(glm::vec3(5,5,5));
     orb.type = core::Model::ModelType::Object3d;
     orb.ModelName = "lightOrb";
@@ -387,10 +390,10 @@ int main() {
 
 // #pragma endregion SecondScene
 
-    core::Model lightOrb = CreateObject("models/sphere.fbx");
-    lightOrb.translate(LightDirection);
-    lightOrb.scale(glm::vec3(0.1,0.1,0.1));
-    lightOrb.ModelName = "LightOrb";
+    // core::Model lightOrb = CreateObject("models/sphere.fbx");
+    // lightOrb.translate(LightDirection);
+    // lightOrb.scale(glm::vec3(0.1,0.1,0.1));
+    // lightOrb.ModelName = "LightOrb";
 
     float quadVertices[] = {
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -424,8 +427,8 @@ int main() {
                  clearColor.g, clearColor.b, clearColor.a);
 
 
-    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 10.0f);
-    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 10.0f);
     glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
     glm::vec3 camPos = glm::vec3(cameraPos.x, cameraPos.y, cameraPos.z);
     glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -590,7 +593,9 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glm::mat4 M(1); // identity matrix
         M = glm::translate(M, cameraPos);
         M = glm::rotate(M, camHeading, glm::vec3(0,1,0));
+        cameraDirection += camHeading * glm::vec3(0,1,0);
         M = glm::rotate(M, camPitch, glm::vec3(1.0,0.0,0.0));
+        cameraDirection += camPitch * glm::vec3(1.0,0.0,0.0);
 
 
 
@@ -620,12 +625,12 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         //Light
         // lightOrb.translate(LightDirection);
 
-        glUseProgram(modelLightShaderProgram);
-        glBindVertexArray(0);
-        glActiveTexture(GL_TEXTURE0);
-        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
-        lightOrb.render();
-        glBindVertexArray(0);
+        // glUseProgram(modelLightShaderProgram);
+        // glBindVertexArray(0);
+        // glActiveTexture(GL_TEXTURE0);
+        // glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
+        // lightOrb.render();
+        // glBindVertexArray(0);
 
         for (core::Model* mod : *CurrentScene) {
 
@@ -672,29 +677,29 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClear(GL_COLOR_BUFFER_BIT);
         glDisable(GL_DEPTH_TEST);
 
+        // vec3 pos = cameraPos - orb.getPos();
+        // std::cout << pos.z << std::endl;
 
 
+            float ratio = float(g_width) / float(g_height);
+
+            for (int j = 0; j < g_height; j++) {
+                for (int i = 0; i < g_width; i++) {
+                    float u = (2.0f * i / g_width  - 1.0f) * ratio;
+                    float v = (1.0f - 2.0f * j / g_height);
+
+                    vec3 rayDir = glm::normalize(cameraDirection + u * cameraRight +v * cameraUp);
+                    ray r(camPos, rayDir);
+                    pixels[j * g_width +i] = sendRay(r, orb.getPos(), orb.getRadius());
 
 
+                    // pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
+                    // pixels[j * g_width + i] = glm::vec4(1,0,0,1);
 
-        float ratio = float(g_width) / float(g_height);
-
-        for (int j = 0; j < g_height; j++) {
-            for (int i = 0; i < g_width; i++) {
-                float u = (2.0f * i / g_width  - 1.0f) * ratio;
-                float v = (1.0f - 2.0f * j / g_height);
-
-                vec3 rayDir = glm::normalize(cameraDirection + u * cameraRight +v * cameraUp);
-                ray r(camPos, rayDir);
-                pixels[j * g_width +i] = sendRay(r, orb.getPos(), orb.getRadius());
-
-
-                // pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
-                // pixels[j * g_width + i] = glm::vec4(1,0,0,1);
-
-                // pixels[j * g_width + i] = write_color(i,j,g_width,g_height);
+                    // pixels[j * g_width + i] = write_color(i,j,g_width,g_height);
+                }
             }
-        }
+
 
         glUseProgram(postProcessingShaderProgram);
         //glUniform1i(PixelSize, PixelCount);

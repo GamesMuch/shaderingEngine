@@ -162,18 +162,23 @@ GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
     return shader;
 }
 
-bool hasHitSphere(const point3& center, double radius, const ray& r) {
+double hasHitSphere(const point3& center, double radius, const ray& r) {
     vec3 oc = center - r.origin();
     auto a = dot(r.direction(), r.direction());
     auto b = -2.0 * dot(r.direction(), oc);
     auto c = dot(oc, oc) - radius*radius;
     auto discriminant = b*b - 4*a*c;
-    return (discriminant >= 0);
+    if (discriminant < 0) {
+        return -1;
+    }
+    return (-b - std::sqrt(discriminant) ) / (2.0*a);
 }
 
 glm::vec4 sendRay(ray r, vec3 point, double size) {
-    if (hasHitSphere(point, size, r)) {
-        return glm::vec4(1,0,0,1);
+    auto t = hasHitSphere(point, size, r);
+    if (t > 0.0) {
+        vec3 N = glm::normalize(r.at(t) - vec3(0,0,-1));
+        return glm::vec4(0.5f*color(N.x + 1, N.y + 1, N.z + 1),1);
     }
     vec3 unit_direction = glm::normalize(r.direction());
     float a = 0.5*(unit_direction.y + 1.0);

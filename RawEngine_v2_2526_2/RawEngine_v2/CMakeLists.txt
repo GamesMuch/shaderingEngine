@@ -19,6 +19,10 @@ set(IMGUI_SOURCES
         core/texture.h
         core/Scene.h
         core/Scene.cpp
+        core/ray.cpp
+        core/ray.h
+        core/color.cpp
+        core/color.h
 )
 
 add_executable(RawEngine main.cpp

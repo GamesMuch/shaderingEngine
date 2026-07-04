@@ -17,7 +17,7 @@ namespace core {
         // std::vec3<>
     public:
         Model(std::vector<core::Mesh> meshes) : meshes(meshes), modelMatrix(1) {}
-        ~Model() { printf("Model was destroyed %s!\n", ModelName.c_str()); }
+        // ~Model() { printf("Model was destroyed %s!\n", ModelName.c_str()); }
         enum class ModelType {Object2d,Object3d};
         std::string ModelName;
         ModelType type;

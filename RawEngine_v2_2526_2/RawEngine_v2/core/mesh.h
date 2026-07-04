@@ -14,7 +14,7 @@ namespace core {
         GLuint EBO;
     public:
         Mesh(std::vector<Vertex> vertices, std::vector<GLuint> indices);
-        ~Mesh(){ printf("Deleted a mesh.\n"); }
+        // ~Mesh(){ printf("Deleted a mesh.\n"); }
         void render();
         GLuint getVAO();
         static Mesh generateQuad();

@@ -5,6 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <iostream>
+
 #include "core/mesh.h"
 #include "core/assimpLoader.h"
 #include "core/texture.h"
@@ -30,8 +32,11 @@
 #include <imgui_impl_opengl3.h>
 #endif
 
-int g_width = 800;
-int g_height = 600;
+#include "core/ray.h"
+#include "core/color.h"
+
+int g_width = 200;
+int g_height = 150;
 glm::vec4 Offset = glm::vec4(0.0f,0.0f,0.0f,0.0f);
 glm::vec2 MouseAngle = glm::vec2(0.0f,0.0f);
 glm::vec3 LightDirection = glm::vec3(3.0f,2.0f,0.0f);
@@ -77,7 +82,7 @@ void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
-        glfwSetWindowAspectRatio(window,800, 600);
+        glfwSetWindowAspectRatio(window,200, 150);
 #pragma endregion
 #pragma region Camera Speed
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
@@ -132,7 +137,7 @@ std::string readFileToString(const std::string &filePath) {
 }
 
 GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
-    printf("Loading shader: %s\n", shaderPath.c_str());
+    // printf("Loading shader: %s\n", shaderPath.c_str());
     const std::string shaderText = readFileToString(shaderPath);
     const GLuint shader = glCreateShader(shaderType);
     const char *s_str = shaderText.c_str();
@@ -143,7 +148,7 @@ GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
     if (!success) {
         char infoLog[512];
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
-        printf("Error! Shader issue [%s]: %s\n", shaderPath.c_str(), infoLog);
+        // printf("Error! Shader issue [%s]: %s\n", shaderPath.c_str(), infoLog);
     }
     return shader;
 }
@@ -157,6 +162,22 @@ int main() {
         printf("a: %d b:%d\n",a,b);
     }
     */
+    std::vector<vec3> pixels(g_width * g_height);
+
+    for (int j = 0; j < g_height; j++) {
+        for (int i = 0; i < g_width; i++) {
+            auto r = double(i) / (g_width-1);
+            auto g = double(j) / (g_height-1);
+            auto b = 0.0;
+
+            int ir = int(255.999 * r);
+            int ig = int(255.999 * g);
+            int ib = int(255.999 * b);
+
+            pixels[j * g_width + i] = vec3(ir, ig, ib);
+        }
+    }
+
     glfwInit();
     glfwWindowHint(GLFW_RESIZABLE, true);
     glfwWindowHint(GLFW_SAMPLES, 4);
@@ -559,6 +580,8 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             printf("ERROR::FRAMEBUFFER:: Framebuffer is not complete!\n");
 
+
+
         //Light
         // lightOrb.translate(LightDirection);
         //
@@ -568,7 +591,7 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         // glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
         // lightOrb.render();
         // glBindVertexArray(0);
-
+        /*
         for (core::Model* mod : *CurrentScene) {
 
             if (mod->type == core::Model::ModelType::Object3d) {
@@ -633,9 +656,10 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "edgeColor"), edgeColor.x, edgeColor.y, edgeColor.z);
         glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "colorShader"),colorShaderColor.x, colorShaderColor.y, colorShaderColor.z);
         // glUniform1i(glGetUniformLocation(postProcessingShaderProgram, "horizontal"), check);
-
+        */
         glBindVertexArray(quadVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
+
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

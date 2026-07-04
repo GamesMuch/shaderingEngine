@@ -71,11 +71,13 @@ glm::vec3 edgeColor = glm::vec3(1,1,1);
 void processInput(GLFWwindow *window) {
     //, glm::vec3& offset) {
 
-#pragma region Exiting Inputs
+#pragma region Inputs
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+        glfwSetWindowAspectRatio(window,800, 600);
 #pragma endregion
 #pragma region Camera Speed
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
@@ -103,8 +105,7 @@ void processInput(GLFWwindow *window) {
 core::Model CreateObject(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
-void framebufferSizeCallback(GLFWwindow *window,
-                             int width, int height) {
+void framebufferSizeCallback(GLFWwindow *window, int width, int height) {
     g_width = width;
     g_height = height;
     glViewport(0, 0, width, height);
@@ -157,10 +158,12 @@ int main() {
     }
     */
     glfwInit();
+    glfwWindowHint(GLFW_RESIZABLE, true);
     glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // if (glfwRawMouseInputSupported()) {
     //     glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -438,6 +441,8 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     while (!glfwWindowShouldClose(window)) {
+        glfwGetFramebufferSize(window, &g_width, &g_height);
+        glfwSetWindowAspectRatio(window,g_width, g_height);
 
         glBindFramebuffer(GL_FRAMEBUFFER, fbo); // all subsequent render is done on the framebuffer, instead of on screen
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

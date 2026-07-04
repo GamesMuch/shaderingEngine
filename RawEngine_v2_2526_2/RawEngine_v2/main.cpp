@@ -162,7 +162,7 @@ int main() {
         printf("a: %d b:%d\n",a,b);
     }
     */
-    std::vector<vec3> pixels(g_width * g_height);
+    std::vector<glm::vec4> pixels(g_width * g_height);
 
     for (int j = 0; j < g_height; j++) {
         for (int i = 0; i < g_width; i++) {
@@ -174,7 +174,7 @@ int main() {
             int ig = int(255.999 * g);
             int ib = int(255.999 * b);
 
-            pixels[j * g_width + i] = vec3(ir, ig, ib);
+            pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
         }
     }
 
@@ -451,7 +451,7 @@ int main() {
     unsigned int texBuffer;
     glGenTextures(1, &texBuffer);
     glBindTexture(GL_TEXTURE_2D, texBuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, g_width, g_height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, g_width, g_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texBuffer, 0);
@@ -631,7 +631,7 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
                 return 1;
             }
         }
-
+*/
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -643,20 +643,20 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texBuffer);
 
-        GLint boolList[5];
-        for (int i = 0; i < 5; i++) {
-            boolList[i] = shaderList[i].active;
-        }
-        GLint location = glGetUniformLocation(postProcessingShaderProgram, "shaderBoolList");
-        glUniform1iv(location, 5, boolList);
+        // GLint boolList[5];
+        // for (int i = 0; i < 5; i++) {
+            // boolList[i] = shaderList[i].active;
+        // }
+        // GLint location = glGetUniformLocation(postProcessingShaderProgram, "shaderBoolList");
+        // glUniform1iv(location, 5, boolList);
 
-        glUniform1f(glGetUniformLocation(postProcessingShaderProgram ,"pixelSize"), pixelSize);
-        glUniform1f(glGetUniformLocation(postProcessingShaderProgram , "edgeIntensity"), edgeIntensity);
+        // glUniform1f(glGetUniformLocation(postProcessingShaderProgram ,"pixelSize"), pixelSize);
+        // glUniform1f(glGetUniformLocation(postProcessingShaderProgram , "edgeIntensity"), edgeIntensity);
 
-        glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "edgeColor"), edgeColor.x, edgeColor.y, edgeColor.z);
-        glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "colorShader"),colorShaderColor.x, colorShaderColor.y, colorShaderColor.z);
+        // glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "edgeColor"), edgeColor.x, edgeColor.y, edgeColor.z);
+        // glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "colorShader"),colorShaderColor.x, colorShaderColor.y, colorShaderColor.z);
         // glUniform1i(glGetUniformLocation(postProcessingShaderProgram, "horizontal"), check);
-        */
+
         glBindVertexArray(quadVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
 

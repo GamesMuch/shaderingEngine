@@ -4,19 +4,17 @@
 #include <glm/vec3.hpp>
 
 using color = glm::vec3;
-
-#include <iostream>
-
-inline void write_color(std::ostream& out, const color& pix) {
-    auto r = pix.x;
-    auto g = pix.y;
-    auto b = pix.z;
-
-    int rbyte = int(255.999 * r);
-    int gbyte = int(255.999 * g);
-    int bbyte = int(255.999 * b);
-
-    out << rbyte << ' ' << gbyte << ' ' << bbyte << '\n';
-}
+//
+// inline glm::vec4 write_color(int i, int j, int width, int height) {
+//     auto r = pix.x;
+//     auto g = pix.y;
+//     auto b = pix.z;
+//
+//     int rbyte = int(255.999 * r);
+//     int gbyte = int(255.999 * g);
+//     int bbyte = int(255.999 * b);
+//
+//     return glm::vec4(rbyte,gbyte,bbyte,1.0f);
+// }
 
 #endif

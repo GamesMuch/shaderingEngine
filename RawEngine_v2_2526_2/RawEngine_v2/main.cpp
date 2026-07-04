@@ -5,8 +5,6 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
-#include <iostream>
-
 #include "core/mesh.h"
 #include "core/assimpLoader.h"
 #include "core/texture.h"
@@ -35,8 +33,8 @@
 #include "core/ray.h"
 #include "core/color.h"
 
-int g_width = 200;
-int g_height = 150;
+int g_width = 800;
+int g_height = 600;
 glm::vec4 Offset = glm::vec4(0.0f,0.0f,0.0f,0.0f);
 glm::vec2 MouseAngle = glm::vec2(0.0f,0.0f);
 glm::vec3 LightDirection = glm::vec3(3.0f,2.0f,0.0f);
@@ -55,6 +53,8 @@ std::string ActiveScene;
 std::vector<core::Model*> Scene1;
 std::vector<core::Model*> Scene2;
 
+std::vector<glm::vec4> pixels(g_width * g_height);
+
 struct Shader {
     std::string name;
     bool active;
@@ -71,6 +71,8 @@ float pixelSize = 0.02f;
 glm::vec3 colorShaderColor = glm::vec3(1,1,1);
 float edgeIntensity = 0.3f;
 glm::vec3 edgeColor = glm::vec3(1,1,1);
+
+bool NeedResize = false;
 
 // DONE: Pass offset as reference!
 void processInput(GLFWwindow *window) {
@@ -110,11 +112,15 @@ void processInput(GLFWwindow *window) {
 core::Model CreateObject(std::string name) {
     return core::AssimpLoader::loadModel(name);
 }
+void OnResize() {
+    pixels.resize(g_width * g_height);
+    NeedResize = true;
+}
 void framebufferSizeCallback(GLFWwindow *window, int width, int height) {
     g_width = width;
     g_height = height;
     glViewport(0, 0, width, height);
-
+    OnResize();
 }
 
  void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
@@ -124,6 +130,7 @@ void framebufferSizeCallback(GLFWwindow *window, int width, int height) {
     MouseAngle.y = ypos; //td::fmod(ypos, 360);
     // printf("MousePosition is: %f,%f\n", MouseAngle.x, MouseAngle.y);
 }
+
 
 std::string readFileToString(const std::string &filePath) {
     std::ifstream fileStream(filePath, std::ios::in);
@@ -137,7 +144,7 @@ std::string readFileToString(const std::string &filePath) {
 }
 
 GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
-    // printf("Loading shader: %s\n", shaderPath.c_str());
+    printf("Loading shader: %s\n", shaderPath.c_str());
     const std::string shaderText = readFileToString(shaderPath);
     const GLuint shader = glCreateShader(shaderType);
     const char *s_str = shaderText.c_str();
@@ -148,7 +155,7 @@ GLuint generateShader(const std::string &shaderPath, GLuint shaderType) {
     if (!success) {
         char infoLog[512];
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
-        // printf("Error! Shader issue [%s]: %s\n", shaderPath.c_str(), infoLog);
+        printf("Error! Shader issue [%s]: %s\n", shaderPath.c_str(), infoLog);
     }
     return shader;
 }
@@ -162,7 +169,7 @@ int main() {
         printf("a: %d b:%d\n",a,b);
     }
     */
-    std::vector<glm::vec4> pixels(g_width * g_height);
+
 
     for (int j = 0; j < g_height; j++) {
         for (int i = 0; i < g_width; i++) {
@@ -175,6 +182,7 @@ int main() {
             int ib = int(255.999 * b);
 
             pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
+            // pixels[j * g_width + i] = glm::vec4(1,0,0,1);
         }
     }
 
@@ -184,7 +192,6 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
     // glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // if (glfwRawMouseInputSupported()) {
     //     glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -281,21 +288,19 @@ int main() {
     //FirstScene
 #pragma region FirstScene
 
-    /*
-    core::Mesh otherQuad = core::Mesh::generateQuad();
-    core::Model quad2Model({otherQuad});
-    quad2Model.translate(glm::vec3(0, 0, 0));
-    quad2Model.scale(glm::vec3(5, 5, 1));
-    quad2Model.type = core::Model::ModelType::Object2d;
-    quad2Model.ModelName = "CageQuad";
-    Scene1.emplace_back(&quad2Model);
-
-    core::Model suzanne = CreateObject("models/nonormalmonkey.obj");
-    suzanne.translate(glm::vec3(-2,0,3));
-    suzanne.type = core::Model::ModelType::Object3d;
-    suzanne.ModelName = "monkey1";
-    Scene1.emplace_back(&suzanne);
-    */
+    // core::Mesh otherQuad = core::Mesh::generateQuad();
+    // core::Model quad2Model({otherQuad});
+    // quad2Model.translate(glm::vec3(0, 0, 0));
+    // quad2Model.scale(glm::vec3(5, 5, 1));
+    // quad2Model.type = core::Model::ModelType::Object2d;
+    // quad2Model.ModelName = "CageQuad";
+    // Scene1.emplace_back(&quad2Model);
+    //
+    // core::Model suzanne = CreateObject("models/nonormalmonkey.obj");
+    // suzanne.translate(glm::vec3(-2,0,3));
+    // suzanne.type = core::Model::ModelType::Object3d;
+    // suzanne.ModelName = "monkey1";
+    // Scene1.emplace_back(&suzanne);
 
     core::Model orb = CreateObject("models/sphere.fbx");
     orb.translate(glm::vec3(1,0,0));
@@ -304,65 +309,60 @@ int main() {
     orb.ModelName = "lightOrb";
     Scene1.emplace_back(&orb);
 
-    /*
-    core::Model fish = CreateObject("models/fish.obj");
-    fish.translate(glm::vec3(-2,0,3));
-    fish.scale(glm::vec3(1.0f,5.0f,1.0f));
-    fish.type = core::Model::ModelType::Object3d;
-    fish.ModelName = "fish";
-    Scene1.emplace_back(&fish);
-    */
+    // core::Model fish = CreateObject("models/fish.obj");
+    // fish.translate(glm::vec3(-2,0,3));
+    // fish.scale(glm::vec3(1.0f,5.0f,1.0f));
+    // fish.type = core::Model::ModelType::Object3d;
+    // fish.ModelName = "fish";
+    // Scene1.emplace_back(&fish);
+
 
 
 #pragma endregion FirstScene
 
 #pragma region SecondScene
-    /*
-    core::Model money2 = CreateObject("models/nonormalmonkey.obj");
-    money2.translate(glm::vec3(0,1,3));
-    money2.rotate(glm::vec3(0.53f,0.935f,0.235f),240);
-    money2.type = core::Model::ModelType::Object3d;
-    money2.ModelName = "money2";
-    Scene2.emplace_back(&money2);
-
-    core::Model money3 = CreateObject("models/nonormalmonkey.obj");
-    money3.translate(glm::vec3(0,5,3));
-    money3.type = core::Model::ModelType::Object3d;
-    money3.ModelName = "money3";
-    Scene2.emplace_back(&money3);
-
-    core::Model money4 = CreateObject("models/nonormalmonkey.obj");
-    money4.translate(glm::vec3(0,1,7));
-    money4.type = core::Model::ModelType::Object3d;
-    money4.ModelName = "money4";
-    Scene2.emplace_back(&money4);
-    core::Model money5 = CreateObject("models/nonormalmonkey.obj");
-    money5.translate(glm::vec3(2,1,3));
-    money5.type = core::Model::ModelType::Object3d;
-    money5.ModelName = "money5";
-    Scene2.emplace_back(&money5);
-
-    //Add more monkey
-
-    core::Model fih = CreateObject("models/fish.obj");
-    fih.translate(glm::vec3(0,0.0,0));
-    fih.rotate(glm::vec3(0,0,1), 90);
-    fih.scale(glm::vec3(1.0,5.0,1.0));
-    fih.type = core::Model::ModelType::Object3d;
-    fih.ModelName = "Fih";
-    Scene2.emplace_back(&fih);
-    */
-
+    // core::Model money2 = CreateObject("models/nonormalmonkey.obj");
+    // money2.translate(glm::vec3(0,1,3));
+    // money2.rotate(glm::vec3(0.53f,0.935f,0.235f),240);
+    // money2.type = core::Model::ModelType::Object3d;
+    // money2.ModelName = "money2";
+    // Scene2.emplace_back(&money2);
+    //
+    // core::Model money3 = CreateObject("models/nonormalmonkey.obj");
+    // money3.translate(glm::vec3(0,5,3));
+    // money3.type = core::Model::ModelType::Object3d;
+    // money3.ModelName = "money3";
+    // Scene2.emplace_back(&money3);
+    //
+    // core::Model money4 = CreateObject("models/nonormalmonkey.obj");
+    // money4.translate(glm::vec3(0,1,7));
+    // money4.type = core::Model::ModelType::Object3d;
+    // money4.ModelName = "money4";
+    // Scene2.emplace_back(&money4);
+    // core::Model money5 = CreateObject("models/nonormalmonkey.obj");
+    // money5.translate(glm::vec3(2,1,3));
+    // money5.type = core::Model::ModelType::Object3d;
+    // money5.ModelName = "money5";
+    // Scene2.emplace_back(&money5);
+    //
+    // //Add more monkey
+    //
+    // core::Model fih = CreateObject("models/fish.obj");
+    // fih.translate(glm::vec3(0,0.0,0));
+    // fih.rotate(glm::vec3(0,0,1), 90);
+    // fih.scale(glm::vec3(1.0,5.0,1.0));
+    // fih.type = core::Model::ModelType::Object3d;
+    // fih.ModelName = "Fih";
+    // Scene2.emplace_back(&fih);
+    //
     // Scene2.emplace_back(&light);
 
-#pragma endregion SecondScene
+// #pragma endregion SecondScene
 
-    /*
     core::Model lightOrb = CreateObject("models/sphere.fbx");
     lightOrb.translate(LightDirection);
     lightOrb.scale(glm::vec3(0.1,0.1,0.1));
     lightOrb.ModelName = "LightOrb";
-    */
 
     float quadVertices[] = {
         -1.0f,  1.0f,  0.0f, 1.0f,
@@ -451,7 +451,7 @@ int main() {
     unsigned int texBuffer;
     glGenTextures(1, &texBuffer);
     glBindTexture(GL_TEXTURE_2D, texBuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, g_width, g_height, 0, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, g_width, g_height, 0, GL_RGBA, GL_FLOAT, pixels.data());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texBuffer, 0);
@@ -471,6 +471,13 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
     while (!glfwWindowShouldClose(window)) {
         glfwGetFramebufferSize(window, &g_width, &g_height);
         glfwSetWindowAspectRatio(window,g_width, g_height);
+
+        if (NeedResize) {
+            glBindTexture(GL_TEXTURE_2D, texBuffer);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, g_width, g_height, 0, GL_RGBA, GL_FLOAT, pixels.data());
+            glBindTexture(GL_TEXTURE_2D, 0);
+            NeedResize = false;
+        }
 
         glBindFramebuffer(GL_FRAMEBUFFER, fbo); // all subsequent render is done on the framebuffer, instead of on screen
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -580,18 +587,16 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
         if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             printf("ERROR::FRAMEBUFFER:: Framebuffer is not complete!\n");
 
-
-
         //Light
         // lightOrb.translate(LightDirection);
-        //
-        // glUseProgram(modelLightShaderProgram);
-        // glBindVertexArray(0);
-        // glActiveTexture(GL_TEXTURE0);
-        // glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
-        // lightOrb.render();
-        // glBindVertexArray(0);
-        /*
+
+        glUseProgram(modelLightShaderProgram);
+        glBindVertexArray(0);
+        glActiveTexture(GL_TEXTURE0);
+        glUniformMatrix4fv(matrixUniformLight, 1, GL_FALSE, glm::value_ptr(projection * view * lightOrb.getModelMatrix()));
+        lightOrb.render();
+        glBindVertexArray(0);
+
         for (core::Model* mod : *CurrentScene) {
 
             if (mod->type == core::Model::ModelType::Object3d) {
@@ -631,35 +636,53 @@ glBindFramebuffer(GL_FRAMEBUFFER, 0);
                 return 1;
             }
         }
-*/
+
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glDisable(GL_DEPTH_TEST);
+
+        for (int j = 0; j < g_height; j++) {
+            for (int i = 0; i < g_width; i++) {
+
+                auto r = double(i) / (g_width-1);
+                auto g = double(j) / (g_height-1);
+                auto b = 0.0;
+
+                int ir = int(255.999 * r);
+                int ig = int(255.999 * g);
+                int ib = int(255.999 * b);
+
+                pixels[j * g_width + i] = glm::vec4(ir, ig, ib, 1.0f);
+                // pixels[j * g_width + i] = glm::vec4(1,0,0,1);
+
+                // pixels[j * g_width + i] = write_color(i,j,g_width,g_height);
+            }
+        }
 
         glUseProgram(postProcessingShaderProgram);
         //glUniform1i(PixelSize, PixelCount);
         //glUniform2f(Screensize, (float)g_width, (float)g_height);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texBuffer);
+        glTexSubImage2D(GL_TEXTURE_2D, 0,0,0,g_width,g_height,GL_RGBA, GL_FLOAT, pixels.data());
 
-        // GLint boolList[5];
-        // for (int i = 0; i < 5; i++) {
-            // boolList[i] = shaderList[i].active;
-        // }
-        // GLint location = glGetUniformLocation(postProcessingShaderProgram, "shaderBoolList");
-        // glUniform1iv(location, 5, boolList);
+        GLint boolList[5];
+        for (int i = 0; i < 5; i++) {
+            boolList[i] = shaderList[i].active;
+        }
+        GLint location = glGetUniformLocation(postProcessingShaderProgram, "shaderBoolList");
+        glUniform1iv(location, 5, boolList);
 
-        // glUniform1f(glGetUniformLocation(postProcessingShaderProgram ,"pixelSize"), pixelSize);
-        // glUniform1f(glGetUniformLocation(postProcessingShaderProgram , "edgeIntensity"), edgeIntensity);
+        glUniform1f(glGetUniformLocation(postProcessingShaderProgram ,"pixelSize"), pixelSize);
+        glUniform1f(glGetUniformLocation(postProcessingShaderProgram , "edgeIntensity"), edgeIntensity);
 
-        // glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "edgeColor"), edgeColor.x, edgeColor.y, edgeColor.z);
-        // glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "colorShader"),colorShaderColor.x, colorShaderColor.y, colorShaderColor.z);
+        glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "edgeColor"), edgeColor.x, edgeColor.y, edgeColor.z);
+        glUniform3f(glGetUniformLocation(postProcessingShaderProgram, "colorShader"),colorShaderColor.x, colorShaderColor.y, colorShaderColor.z);
         // glUniform1i(glGetUniformLocation(postProcessingShaderProgram, "horizontal"), check);
 
         glBindVertexArray(quadVAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
-
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

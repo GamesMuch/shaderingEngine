@@ -18,6 +18,7 @@ vec2 currentUv;
 void main()
 {
     currentUv = vuv;
+//     currentUv = vec2(vuv.x, 1.0 - vuv.y);
     vec3 finalColor = vec3(0.0);
 
     if (shaderBoolList[2])
